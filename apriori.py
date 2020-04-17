@@ -16,7 +16,7 @@ def GetInput(words):
             continue
         else:
             break
-        return dataIn
+    return dataIn
 
 def DataReady():
     Location = r'Tic2000\ticdata2000.txt'
@@ -30,7 +30,32 @@ def DataReady():
     return splitData
 
 def GetSupport(data,minSupport):
-    return 0
+    localData=data
+    l1Support=[]
+    l2Support=[]  
+    for col in localData.columns:
+        valuesNumber = localData.pivot_table(index=col, aggfunc='size')
+        valuesUnique=localData[col].unique()
+        valuesUnique.sort()
+        #print(valuesUnique)
+        #print(valuesNumber)
+        for value in valuesUnique:
+            valuesSupport=(valuesNumber[value]/localData.shape[0])*100
+            if valuesSupport>=minSupport:
+                    l1Support.append([col,value,valuesSupport])
+    print(len(l1Support))      
+   # print(l1Support)
+    for i in range(0,len(l1Support)-1):
+        for x in  range(i+1,len(l1Support)):
+            if l1Support[i][0]!=l1Support[x][0]:
+                valuesNumber=localData.pivot_table(index=[l1Support[i][0],l1Support[x][0]], aggfunc='size')
+                print(valuesNumber[i][x])
+                #valuesSupport=(valuesNumber[i][x]/localData.shape[0])*100
+                #if valuesSupport>=minSupport:
+                    #l2Support.append([l1Support[i][0],l1Support[x][0],valuesNumber[i],valuesNumber[x],valuesSupport])
+    print(l2Support)                
+
+return 0
 
 def GetConfidence(dataSupported,minConfidence):
     return 0
