@@ -1,0 +1,2 @@
+# Apriori_Big_Data
+In this project Apriori algorithm is applied to find all the association rules in the given dataset. The dataset itself represents the customer data for an insurance company; it has 86 attributes with 5822 records. The Algorithm finds all the possible association rules for user-defined values of support and confidence, in addition to computing the lift and leverage for each rule to prioritize the rules. Only 12 attributes are chosen for the algorithm to work on them, starting from index 11
