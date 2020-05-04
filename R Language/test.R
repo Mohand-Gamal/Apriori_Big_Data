@@ -9,7 +9,7 @@ CheckInput <- function(input) {
 }
 
 #Function to implement cyclic shift on a list#
-shifter <- function(x, n = 1) {
+Shifter <- function(x, n = 1) {
   if (n == 0)
     x
   else
@@ -48,7 +48,7 @@ GetDataReady <- function() {
 
 
 #Function to calculate the support for the whole data#
-calculate_Support <- function(data, minSupport)
+CalculateSupport <- function(data, minSupport)
 {
   #copy data to local data frame y#
   y <- as.data.frame(data)
@@ -111,7 +111,7 @@ calculate_Support <- function(data, minSupport)
 
 
 #Function for calculating association rules (confidence ,lift and leverage)
-Calculate_rules <- function(support, minConfidence)
+CalculateRules <- function(support, minConfidence)
 {
   #initialization of rules data frame to hold all valid association rules#
   rules <- data.frame(matrix(ncol = 14, nrow = 0))
@@ -166,7 +166,7 @@ Calculate_rules <- function(support, minConfidence)
       idx1 <- idx
       for (i in 2:length(idx)) {
         #apply cyclic shift on column indices#
-        idx1 <- shifter(idx1)
+        idx1 <- Shifter(idx1)
         possibleRules <-
           dplyr::bind_cols(possibleRules, as.data.frame(idx1))
       }
@@ -275,7 +275,7 @@ Calculate_rules <- function(support, minConfidence)
 }
 
 #Function for the outputted rules
-Print_Rules <- function(rules) {
+PrintRules <- function(rules) {
   #output the following in output.txt file#
   sink("output.txt")
   
@@ -410,10 +410,10 @@ prune <<- data.frame()
 data = GetDataReady()
 
 #get the support dataframe by calling the function#
-support <- calculate_Support(data, minSupport)
+support <- CalculateSupport(data, minSupport)
 
 #get the valid association rules dataframe by calling the function#
-rules <- Calculate_rules(support, minConfidence)
+rules <- CalculateRules(support, minConfidence)
 
 #print the valid rules in a text file by calling the function#
-Print_Rules(rules)
+PrintRules(rules)
