@@ -1,5 +1,1 @@
-MRELSA(0) ---> MBERZELF(0)	Support:33.66541	Confidence:80.06536	Lift:1.117575	Leverage:0.03541784
-MRELSA(0) ---> MBERBOER(0)	Support:30.7798	Confidence:73.20261	Lift:1.020559	Leverage:0.006200671
-MOPLHOOG(0) ---> MBERZELF(0)	Support:32.44589	Confidence:87.98323	Lift:1.228095	Leverage:0.06026198
-MBERZELF(0) ---> MBERBOER(0)	Support:54.75782	Confidence:76.43251	Lift:1.065589	Leverage:0.03370459
-MBERBOER(0) ---> MBERZELF(0)	Support:54.75782	Confidence:76.341	Lift:1.065589	Leverage:0.03370459
+There was no valid association rules in the data to satisfy the conditions given
